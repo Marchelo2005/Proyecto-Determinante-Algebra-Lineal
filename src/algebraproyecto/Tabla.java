@@ -7,6 +7,8 @@ import javax.swing.*;
 public class Tabla {
 
     JFrame frame;
+    JFrame invFrame;
+    JFrame adjFrame;
     JTextField textField;
     JButton generateButton;
     JButton calculateButton;
@@ -19,11 +21,19 @@ public class Tabla {
     CalculoDeterminante det = new CalculoDeterminante();
     CalculoAdjunta adj = new CalculoAdjunta();
     CalculoInversa inv = new CalculoInversa();
+    BotonGenerar gen = new BotonGenerar();
+
     public Tabla() {
-        //Creando la ventana y sus dimensiones
+        //Creando la ventana principal y sus dimensiones
         frame = new JFrame("Cálculo de Matrices");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 800);
+        //Creando la ventana para mostrar la matriz  adjunta
+        adjFrame = new JFrame("Matriz Adjunta");
+        adjFrame.setSize(500, 500);
+        //Creando la ventana para mostrar la matriz inversa 
+        invFrame = new JFrame("Matriz Inversa");
+        invFrame.setSize(500, 500);
         //Creando el panel general
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -41,7 +51,7 @@ public class Tabla {
         //Ajustando algunos componentes del panel general
         resultArea.setFont(new Font("Arial", Font.BOLD, 16));
         resultArea.setEditable(false);
-        //generando paneles de posición
+        //generando paneles para mostrar las matrices inversa y adjunta
         adjointPanel = new JPanel();
         inversePanel = new JPanel();
         JPanel inputPanel = new JPanel();
@@ -60,10 +70,10 @@ public class Tabla {
         panel.add(inputPanel, BorderLayout.NORTH);
         panel.add(new JScrollPane(matrixPanel), BorderLayout.CENTER);
         panel.add(new JScrollPane(resultArea), BorderLayout.SOUTH);
-        panel.add(new JScrollPane(adjointPanel), BorderLayout.EAST);
-        panel.add(new JScrollPane(inversePanel), BorderLayout.WEST);
-        //Añadiendo el panel principal a la ventana y haciendolo visible
+        //Añadiendo el panel principal a la ventana y los otros paneles a sus respectivas ventanas
         frame.add(panel);
+        invFrame.add(inversePanel);
+        adjFrame.add(adjointPanel);
         //Validanddo datos
         textField.addKeyListener(new KeyAdapter() {
             @Override
@@ -73,33 +83,13 @@ public class Tabla {
                     e.consume(); // Ignorar el carácter si no es un dígito
                 }
             }
+          
         });
         //Generando la matriz a partir de los datos de textField
         generateButton.addActionListener(e -> {
-            String input = textField.getText();
-            if (!input.isEmpty()) {
-                try {
-                    int size = Integer.parseInt(input);
-                    matrixPanel.removeAll();
-                    matrixPanel.setLayout(new GridLayout(size, size));
-
-                    for (int i = 0; i < size; i++) {
-                        for (int j = 0; j < size; j++) {
-                            JTextField cell = new JTextField(5);
-                            cell.setHorizontalAlignment(JTextField.CENTER);
-                            matrixPanel.add(cell);
-                        }
-                    }
-
-                    matrixPanel.revalidate();
-                    matrixPanel.repaint();
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(frame, "Por favor, ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(frame, "Por favor, ingrese un número.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            gen.generar(this);
         });
+        //Agregando funcionalidades a los botones
         calculateButton.addActionListener(e -> {
             det.determinante(this);
         });
@@ -108,6 +98,7 @@ public class Tabla {
         });
         inverseButton.addActionListener(e -> {
             inv.inversa(this);
+            
         });
     }
 

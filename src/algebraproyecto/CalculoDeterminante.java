@@ -14,7 +14,9 @@ import javax.swing.JTextField;
  */
 public class CalculoDeterminante {
     public void determinante(Tabla tabla){
-        try {
+        String input = tabla.textField.getText();
+            if (!input.isEmpty()) {
+                try {
                     Component[] components = tabla.matrixPanel.getComponents();
                     int size = (int) Math.sqrt(components.length);
                     double[][] matrix = new double[size][size];
@@ -32,6 +34,10 @@ public class CalculoDeterminante {
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(tabla.frame, "Asegúrese de llenar correctamente todos los valores de la matriz.", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            } else {
+                JOptionPane.showMessageDialog(tabla.frame, "Por favor, ingrese un número.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
     }
     public static double calculateDeterminant(double[][] matrix) {
         int size = matrix.length;

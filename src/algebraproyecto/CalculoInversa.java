@@ -14,8 +14,11 @@ import javax.swing.JTextField;
  * @author elian
  */
 public class CalculoInversa {
-    public void inversa(Tabla tabla){
-        try {
+
+    public void inversa(Tabla tabla) {
+        String input = tabla.textField.getText();
+        if (!input.isEmpty()) {
+            try {
                 Component[] components = tabla.matrixPanel.getComponents();
                 int size = (int) Math.sqrt(components.length);
                 double[][] matrix = new double[size][size];
@@ -56,8 +59,14 @@ public class CalculoInversa {
 
                 tabla.inversePanel.revalidate();
                 tabla.inversePanel.repaint();
+                tabla.invFrame.setVisible(true);
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(tabla.frame, "Asegúrese de llenar correctamente todos los valores de la matriz.", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            
+        } else {
+            JOptionPane.showMessageDialog(tabla.frame, "Por favor, ingrese un número.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 }
