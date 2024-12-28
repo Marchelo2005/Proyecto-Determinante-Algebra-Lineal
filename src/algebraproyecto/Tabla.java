@@ -2,11 +2,15 @@ package algebraproyecto;
 
 import java.awt.*;
 import java.awt.event.*;
-<<<<<<< HEAD
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-=======
->>>>>>> 03108b550005858f4c1a149e9016d7ca8c151df7
-import javax.swing.*;
+
 
 public class Tabla {
 
@@ -95,10 +99,7 @@ public class Tabla {
         });
         //Agregando funcionalidades a los botones
         calculateButton.addActionListener(e -> {
-<<<<<<< HEAD
-           
-=======
->>>>>>> 03108b550005858f4c1a149e9016d7ca8c151df7
+
             det.determinante(this);
         });
         adjointButton.addActionListener(e -> {

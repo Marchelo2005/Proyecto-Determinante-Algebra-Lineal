@@ -13,11 +13,8 @@ import javax.swing.JTextField;
  * @author elian
  */
 public class CalculoDeterminante {
-<<<<<<< HEAD
-    private static int d1;
-    private static int cambio;
-=======
->>>>>>> 03108b550005858f4c1a149e9016d7ca8c151df7
+
+
     public void determinante(Tabla tabla){
         String input = tabla.textField.getText();
             if (!input.isEmpty()) {
@@ -32,7 +29,7 @@ public class CalculoDeterminante {
                         matrix[i][j] = Double.parseDouble(cell.getText());
                     }
                 }
-<<<<<<< HEAD
+
                 int d=0;
                 double determinant=0;
     if ((size-1)==0 || (size-1)==1){
@@ -52,10 +49,6 @@ public class CalculoDeterminante {
    
                 determinant = calculateDeterminant(matrix,d);
                 }
-=======
-
-                double determinant = calculateDeterminant(matrix);
->>>>>>> 03108b550005858f4c1a149e9016d7ca8c151df7
                 tabla.resultArea.setText("Determinante: " + determinant);
                 JOptionPane.showMessageDialog(tabla.frame,"la determinante es: "+determinant);
             } catch (NumberFormatException ex) {
@@ -66,11 +59,11 @@ public class CalculoDeterminante {
             }
         
     }
-<<<<<<< HEAD
+
     public static double calculateDeterminant(double[][] matrix,int d) {
-=======
-    public static double calculateDeterminant(double[][] matrix) {
->>>>>>> 03108b550005858f4c1a149e9016d7ca8c151df7
+
+    
+
         int size = matrix.length;
         if (size == 1) {
             return matrix[0][0];
@@ -80,17 +73,9 @@ public class CalculoDeterminante {
         }
 
         double determinant = 0;
-<<<<<<< HEAD
-        if (CalculoDeterminante.d1>(size-1)){
-        int i=0;
-        i+=1;
-        if(i==1){
-            CalculoDeterminante.cambio=CalculoDeterminante.d1;
-        }
-            CalculoDeterminante.d1=(size-1);
-        }
+
+        
  
-    
     for (int i = 0; i < size; i++) {
             
             double[][] subMatrix = new double[size - 1][size - 1];
@@ -130,20 +115,5 @@ public class CalculoDeterminante {
         return determinant;
 }
     
-=======
-        for (int i = 0; i < size; i++) {
-            double[][] subMatrix = new double[size - 1][size - 1];
-            for (int j = 1; j < size; j++) {
-                for (int k = 0, col = 0; k < size; k++) {
-                    if (k != i) {
-                        subMatrix[j - 1][col++] = matrix[j][k];
-                    }
-                }
-            }
-            //pow = potencia donde (-1)es el valor a potenciar e i es el valor al cual será potenciado
-            determinant += Math.pow(-1, i) * matrix[0][i] * calculateDeterminant(subMatrix);
-        }
-        return determinant;
-    }
->>>>>>> 03108b550005858f4c1a149e9016d7ca8c151df7
+
 }

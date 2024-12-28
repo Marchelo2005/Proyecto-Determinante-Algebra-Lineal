@@ -67,11 +67,9 @@ public class CalculoAdjunta {
                     }
                     subRow++;
                 }
-<<<<<<< HEAD
+
                 adjoint[j][i] = Math.pow(-1, i + j) * CalculoDeterminante.calculateDeterminant(subMatrix,0);
-=======
-                adjoint[j][i] = Math.pow(-1, i + j) * CalculoDeterminante.calculateDeterminant(subMatrix);
->>>>>>> 03108b550005858f4c1a149e9016d7ca8c151df7
+
             }
         }
 
