@@ -30,7 +30,11 @@ public class CalculoInversa {
                     }
                 }
 
+<<<<<<< HEAD
                 double determinant = CalculoDeterminante.calculateDeterminant(matrix,0);
+=======
+                double determinant = CalculoDeterminante.calculateDeterminant(matrix);
+>>>>>>> 03108b550005858f4c1a149e9016d7ca8c151df7
                 if (determinant == 0) {
                     JOptionPane.showMessageDialog(tabla.frame, "La matriz no tiene inversa (determinante es 0).", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
