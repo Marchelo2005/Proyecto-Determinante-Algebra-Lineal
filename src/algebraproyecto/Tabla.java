@@ -20,6 +20,7 @@ public class Tabla {
     JTextField textField;
     JButton generateButton;
     JButton calculateButton;
+    JButton volver;
     JButton adjointButton;
     JButton inverseButton;
     JPanel matrixPanel;
@@ -35,7 +36,7 @@ public class Tabla {
         //Creando la ventana principal y sus dimensiones
         frame = new JFrame("Cálculo de Matrices");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 800);
+        frame.setSize(1400, 800);
         //Creando la ventana para mostrar la matriz  adjunta
         adjFrame = new JFrame("Matriz Adjunta");
         adjFrame.setSize(500, 500);
@@ -49,6 +50,7 @@ public class Tabla {
         JLabel label = new JLabel("Ingrese un número (tamaño de la matriz):");
         textField = new JTextField(10);
         generateButton = new JButton("Generar Matriz");
+        volver = new JButton("Volver al menú");
         calculateButton = new JButton("Calcular Determinante");
         adjointButton = new JButton("Calcular Matriz Adjunta");
         inverseButton = new JButton("Calcular Matriz Inversa");
@@ -70,6 +72,7 @@ public class Tabla {
         inputPanel.add(calculateButton);
         inputPanel.add(adjointButton);
         inputPanel.add(inverseButton);
+        inputPanel.add(volver);
         //Especificando la organizacion de componentes
         matrixPanel.setLayout(new GridLayout(0, 1));
         adjointPanel.setLayout(new GridLayout(0, 1));
@@ -107,6 +110,12 @@ public class Tabla {
         });
         inverseButton.addActionListener(e -> {
             inv.inversa(this);
+            
+        });
+        volver.addActionListener(e -> {
+            Ventana ven = new Ventana();
+            ven.mostrarVentana();
+            frame.setVisible(false);
             
         });
     }
