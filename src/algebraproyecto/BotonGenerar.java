@@ -1,6 +1,7 @@
 
 package algebraproyecto;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
